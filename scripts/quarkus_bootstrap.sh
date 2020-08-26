@@ -1,0 +1,1 @@
+mvn io.quarkus:quarkus-maven-plugin:1.7.0.Final:create -DprojectGroupId=de.gedoplan.showcase -DprojectArtifactId=ssq-quarkus -DprojectVersion=1.0-SNAPSHOT -Dextensions=quarkus-hibernate-orm,quarkus-jdbc-h2,quarkus-resteasy-jsonb
