@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +19,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @ToString
 public class Person {
 
@@ -31,6 +29,11 @@ public class Person {
   private String name;
 
   private LocalDate birthDay;
+
+  public Person(String name, LocalDate birthDay) {
+    this.name = name;
+    this.birthDay = birthDay;
+  }
 
   @JsonbTransient
   public int getAge() {
