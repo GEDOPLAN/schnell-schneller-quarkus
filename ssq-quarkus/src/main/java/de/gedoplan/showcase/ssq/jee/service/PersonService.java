@@ -21,4 +21,8 @@ public class PersonService {
     }
     return count != 0 ? (totalAge / count) : 0;
   }
+
+  public int getCount() {
+    return this.personRepository.findAll().size();
+  }
 }

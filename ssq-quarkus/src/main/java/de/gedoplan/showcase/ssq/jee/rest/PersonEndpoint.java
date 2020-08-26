@@ -58,4 +58,11 @@ public class PersonEndpoint {
   public double getAverageAge() {
     return this.personService.getAverageAge();
   }
+
+  @Path("count")
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  public int getCount() {
+    return this.personService.getCount();
+  }
 }
