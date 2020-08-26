@@ -19,6 +19,6 @@ public class PersonService {
       ++count;
       totalAge += person.getAge();
     }
-    return totalAge / count;
+    return count != 0 ? (totalAge / count) : 0;
   }
 }
