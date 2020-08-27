@@ -19,7 +19,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 
 @Path("person")
 public class PersonEndpoint {
@@ -35,7 +35,7 @@ public class PersonEndpoint {
 
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
-  @Counted(name = "personPost", absolute = true)
+  @Timed(name = "postPerson", absolute = true)
   public Response post(Person person, @Context UriInfo uriInfo) {
     if (person.getId() != null) {
       throw new BadRequestException("Id must not be set");
