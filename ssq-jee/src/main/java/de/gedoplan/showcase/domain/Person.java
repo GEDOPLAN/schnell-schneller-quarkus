@@ -1,4 +1,4 @@
-package de.gedoplan.showcase.ssq.jee.domain;
+package de.gedoplan.showcase.domain;
 
 import java.time.LocalDate;
 import java.time.Period;

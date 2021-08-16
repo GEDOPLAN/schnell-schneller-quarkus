@@ -1,6 +1,6 @@
-package de.gedoplan.showcase.ssq.jee.persistece;
+package de.gedoplan.showcase.persistence;
 
-import de.gedoplan.showcase.ssq.jee.domain.Person;
+import de.gedoplan.showcase.domain.Person;
 
 import java.util.List;
 

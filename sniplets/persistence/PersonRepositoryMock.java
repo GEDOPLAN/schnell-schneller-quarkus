@@ -1,8 +1,6 @@
-package de.gedoplan.showcase.ssq.jee.persistence;
+package de.gedoplan.showcase.persistence;
 
-import de.gedoplan.showcase.ssq.jee.domain.Person;
-import de.gedoplan.showcase.ssq.jee.persistece.PersonRepository;
-
+import de.gedoplan.showcase.domain.Person;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;

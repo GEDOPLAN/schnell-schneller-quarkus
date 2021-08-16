@@ -1,4 +1,4 @@
-package de.gedoplan.showcase.ssq.jee.rest;
+package de.gedoplan.showcase.plattform;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

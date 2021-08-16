@@ -1,4 +1,4 @@
-package de.gedoplan.showcase.ssq.jee.rest;
+package de.gedoplan.showcase.rest;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
@@ -11,11 +11,11 @@ import io.quarkus.test.junit.QuarkusTest;
 public class PersonEndpointTest {
 
   @Test
-  void testGetCount() {
+  void testGetAverageAge() {
     given()
-      .when().get("/person/count")
+      .when().get("/person/avgAge")
       .then()
       .statusCode(200)
-      .body(is("2"));
+      .body(is("21.0")); 
   }
 }

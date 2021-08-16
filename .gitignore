@@ -42,3 +42,6 @@ buildNumber.properties
 
 # Naryana
 ObjectStore/
+
+# Live Coding Project
+ssq-quarkus/

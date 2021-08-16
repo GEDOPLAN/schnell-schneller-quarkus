@@ -1,4 +1,4 @@
-package de.gedoplan.showcase.ssq.jee.service;
+package de.gedoplan.showcase.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,6 +16,6 @@ public class PersonServiceTest {
 
   @Test
   void testGetAverageAge() {
-    assertEquals(20, this.personService.getAverageAge(), 0.1);
+    assertEquals(21, this.personService.getAverageAge(), 0.1);
   }
 }

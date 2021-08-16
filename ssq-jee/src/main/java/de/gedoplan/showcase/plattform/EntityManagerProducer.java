@@ -1,4 +1,4 @@
-package de.gedoplan.showcase.ssq.jee.persistece;
+package de.gedoplan.showcase.plattform;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;

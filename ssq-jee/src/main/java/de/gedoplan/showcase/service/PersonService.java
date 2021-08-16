@@ -1,7 +1,7 @@
-package de.gedoplan.showcase.ssq.jee.service;
+package de.gedoplan.showcase.service;
 
-import de.gedoplan.showcase.ssq.jee.domain.Person;
-import de.gedoplan.showcase.ssq.jee.persistece.PersonRepository;
+import de.gedoplan.showcase.domain.Person;
+import de.gedoplan.showcase.persistence.PersonRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

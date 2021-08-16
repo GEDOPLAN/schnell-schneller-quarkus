@@ -1,8 +1,8 @@
-package de.gedoplan.showcase.ssq.jee.rest;
+package de.gedoplan.showcase.rest;
 
-import de.gedoplan.showcase.ssq.jee.domain.Person;
-import de.gedoplan.showcase.ssq.jee.persistece.PersonRepository;
-import de.gedoplan.showcase.ssq.jee.service.PersonService;
+import de.gedoplan.showcase.domain.Person;
+import de.gedoplan.showcase.persistence.PersonRepository;
+import de.gedoplan.showcase.service.PersonService;
 
 import java.net.URI;
 import java.util.List;
@@ -41,12 +41,12 @@ public class PersonEndpoint {
     this.personRepository.persist(person);
 
     URI uri = uriInfo
-      .getAbsolutePathBuilder()
-      .path(person.getId().toString())
-      .build();
+        .getAbsolutePathBuilder()
+        .path(person.getId().toString())
+        .build();
     return Response
-      .created(uri)
-      .build();
+        .created(uri)
+        .build();
   }
 
   @Inject
