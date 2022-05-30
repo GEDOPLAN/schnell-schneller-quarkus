@@ -1,2 +1,1 @@
-set -x
-docker run -d --rm -p 8080:8080 --name ssq-quarkus-jvm gedoplan-showcase/ssq-quarkus-jvm
+docker run -d --rm -p 8080:8080 -e DB_HOST=192.168.178.69 --name quarkus-jvm gedoplan-showcase/ssq:jvm

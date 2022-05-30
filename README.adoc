@@ -1,0 +1,126 @@
+# schnell-schneller-quarkus
+
+Begleitprojekt zum Vortrag "schnell, schneller, Quarkus"
+
+Im Verzeichnis `quarkus` wird im Vortrag eine kleine Anwendung auf Basis von Quarkus aufgebaut, die den klassischen Stack aus REST, CDI und JPA enthält.
+
+Sie nutzt eine PostgreSQL-DB genutzt, die mit dem Skript `scripts/postgres.sh` als Docker-Container gestartet werden kann.
+
+Die Anwendung wird stückweise aufgebaut, und zwar mit den folgenden Schritten:
+
+
+. Bootstrap des Projekts, Prod Mode, Dev Mode
++
+siehe Skript `scripts/bootstrap.sh`
+
+.. Build mit `mvn package`
+
+.. Normaler Start mit `java -jar target/quarkus-app/quarkus-run.jar`
++
+Stopp mit `Ctrl-C`
+
+.. Dev mode starten mit `mvn quarkus:dev`
++
+REST Call `curl localhost:8080/hello`
++
+Quellcode (z. B. von `GreetingResource`) ändern und erneuten REST Call ausführen
++
+Stopp mit `q`
+
+
+. Verwaltung von Personen ergänzen (JPA, REST)
+
+.. Extension für JPA, Hibernate und PostgreSQL ergänzen
++
+siehe Skript `scripts/add-extensions.sh`. Es wird zunächst nur die erste Zeile des Skripts benötigt.
++
+Wir verwenden Lombok zum Erzeugen von Gettern, Settern etc. Dazu muss die entsprechende Dependency in `pom.xml` hinzugefügt werden - s. `sniplets/lombok.txt`. 
++
+Wir lassen die DB-Tabellen automatisch erzeugen. Dazu dient die folgende Zeile in `src/main/resources/application.properties`:
++
+`quarkus.hibernate-orm.database.generation=update`
++
+Die restlichen Properties stellen das Logging ein und definieren eine Datasource für den Produktions-Modus. Sie sind für die weitere Betrachtung zunächst noch unwichtig.
+
+.. Klassen erstellen:
++
+Für den klassischen REST/CDI/JPA-Stack werden eine einfache Entity, eine DB-Zugriffsklasse, ein einfacher Service und ein REST-API definiert:
+
+* `de.gedoplan.showcase.domain.Person`
+* `de.gedoplan.showcase.persistence.PersonRepository`
+* `de.gedoplan.showcase.service.PersonService`
+* `de.gedoplan.showcase.rest.PersonResource`
+* `de.gedoplan.showcase.rest.RestApplication`
+
+.. Anwendung wieder im Dev Mode starten: `mvn quarkus:dev`.
+
+.. Einige `curl`-Aufrufe zum Ausprobieren:
+
+ curl -X POST localhost:8080/api/persons \
+   -H 'content-type: application/json' \
+   -d '{"name": "Dagobert Duck", "birthDay": "1905-12-05"}'
+ 
+ curl -X POST localhost:8080/api/persons \
+   -H 'content-type: application/json' \
+   -d '{"name": "Donald Duck", "birthDay": "1931-03-13"}'
+   
+ curl -X POST localhost:8080/api/persons \
+   -H 'content-type: application/json' \
+   -d '{"name": "Tick Duck", "birthDay": "1940-08-17"}'
+   
+ curl localhost:8080/api/persons
+ 
+ curl localhost:8080/api/persons/avgAge
+
+
+. Test-Unterstützung
++
+In `src/test` befinden sich einige Test-Klassen:
++
+* Mock für den DB-Zugriff
+* Black-Box-Test für das REST API
+* White-Box-Test für den Service
++
+Start der Tests
++
+* in der IDE
+* per Maven (`mvn test`)
+* mittels Continuous Testing im Dev Mode (`r`).
+
+
+. MicroProfile-Bausteine ergänzen
+
+.. Extensions hinzufügen
++
+siehe Skript `scripts/add-extensions.sh`. Wenn noch nicht geschehen, muss nun die zweite Zeile des Skripts ausgeführt werden.
+
+.. MP Health
++
+Endpunkte `localhost:8080/q/health/live` und `localhost:8080/q/health/ready`.
+
+.. MP Metrics
++
+Endpunkt `localhost:8080/q/metrics`.
+
+.. MP OpenAPI
++
+Endpunkt `localhost:8080/q/openapi` sowie Swagger-UI unter `localhost:8080/q/swagger-ui`.
+
+
+. Erstellen von Container Images
++
+Mit den Skripts `scripts/build_jvm.sh` und `scripts/build_native.sh` können Docker Images für den Betrieb als 'normale' Java-Anwendung bzw. als Native-Anwendung erstellt werden.
++
+WARNING: Der Native Build dauert recht lange.
++
+Die Anwendung kann mit Hilfe der Skripts `scripts/run_jvm.sh` bzw. `scripts/run_native.sh` als Container gestartet werden.
+
+
+
+---
+
+Thematisch passendende Seminare finden Sie hier:
+
+* https://gedoplan.de/kursthemen/jakarta-ee-java-ee/schulung-einfuehrung-quarkus/
+* https://gedoplan.de/kursthemen/jakarta-ee-java-ee/microservices-mit-quarkus-kompakt/
+* https://gedoplan.de/kursthemen/jakarta-ee-java-ee/migration-jee-quarkus/

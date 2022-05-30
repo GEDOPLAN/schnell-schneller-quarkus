@@ -1,2 +1,1 @@
-set -x
-mvn io.quarkus:quarkus-maven-plugin:1.7.0.Final:create -DprojectGroupId=de.gedoplan.showcase -DprojectArtifactId=ssq-quarkus -DprojectVersion=1.0-SNAPSHOT -Dextensions=quarkus-hibernate-orm,quarkus-jdbc-postgresql,quarkus-resteasy-jsonb
+mvn io.quarkus:quarkus-maven-plugin:2.9.2.Final:create -DprojectGroupId=de.gedoplan.showcase.next-lvl -DprojectArtifactId=quarkus -DprojectVersion=1.0-SNAPSHOT -Dextensions=quarkus-resteasy-jsonb -DclassName=de.gedoplan.showcase.rest.GreetingResource

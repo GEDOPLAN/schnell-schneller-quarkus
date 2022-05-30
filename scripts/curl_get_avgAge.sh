@@ -1,2 +1,1 @@
-set -x
-curl localhost:8080/person/avgAge
+curl localhost:8080/persons/avgAge

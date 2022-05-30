@@ -1,2 +1,1 @@
-set -x
-curl localhost:8080/person
+curl localhost:8080/persons
