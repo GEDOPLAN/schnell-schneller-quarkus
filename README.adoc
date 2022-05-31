@@ -10,8 +10,10 @@ Die Anwendung wird stückweise aufgebaut, und zwar mit den folgenden Schritten:
 
 
 . Bootstrap des Projekts, Prod Mode, Dev Mode
+
+.. siehe Skript `scripts/bootstrap.sh`.
 +
-siehe Skript `scripts/bootstrap.sh`
+NOTE: Das aktuelle Projekt ist ursprünglich mit dem angegebenen Skript aufgesetzt worden. Ein erneuter Aufruf ist natürlich nur in einem getrennten Verzeichnis möglich.
 
 .. Build mit `mvn package`
 
